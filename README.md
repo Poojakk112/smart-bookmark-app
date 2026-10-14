@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔖 Smart Bookmark App
 
-## Getting Started
+A simple bookmark manager where you sign in with Google and save your favourite links. Each user only sees their own bookmarks.
 
-First, run the development server:
+**Live Demo:** https://smart-bookmark-app-iota-three.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📸 Screenshot
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Login screen](screenshots/login.jpg)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🔐 Google sign-in with Supabase Auth (session is kept across reloads)
+- ➕ Add bookmarks with a title and URL
+- 📋 Bookmarks listed newest first
+- 👤 Per-user data: each user only sees the bookmarks they saved
+- 🚪 Logout
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend:** Next.js 16 (App Router), React 19, TypeScript
+- **Styling:** Tailwind CSS 4
+- **Backend / Auth / Database:** Supabase (Google OAuth + Postgres)
+- **Deployment:** Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repo and install dependencies
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/Poojakk112/smart-bookmark-app.git
+   cd smart-bookmark-app
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Create a `.env.local` file
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+3. In Supabase, enable the **Google** auth provider and create a `bookmarks` table with the columns `id`, `title`, `url`, `user_id` and `created_at`.
+
+4. Start the dev server
+
+   ```bash
+   npm run dev
+   ```
+
+   Open http://localhost:3000.
